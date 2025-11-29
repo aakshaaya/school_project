@@ -78,7 +78,7 @@ def new_student():
     cursor.execute(cmd)
     result = cursor.fetchone()
     
-    if not result:
+    if not result or result[0] is None:
         student_id = 1
     else:
         student_id = result[0] + 1
@@ -104,7 +104,7 @@ def new_staff():
     query = 'SELECT max(STAFF_ID) FROM STAFF'
     cursor.execute(query)
     result = cursor.fetchone()
-    if not result:
+    if not result or result[0] is None:
         staff_id = 1
     else:
         staff_id = result[0] + 1
@@ -529,7 +529,7 @@ def marksmanagement():
         cmd = "SELECT MAX(SNO) FROM ACADEMIC"
         cursor.execute(cmd)
         result = cursor.fetchone()
-        if not result:
+        if not result or result[0] is None:
             new_sno=1
         else:
             new_sno=result[0]+1
@@ -601,7 +601,7 @@ def send_announcement(staff_id):
     cursor.execute(cmd)
     result = cursor.fetchone()
     
-    if not result:
+    if not result or result[0] is None:
         ref = 1
     else:
         ref = result[0] + 1
