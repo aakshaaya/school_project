@@ -34,6 +34,7 @@ def report_specific_section():
     table_headers =['NAME', 'STUDENT_ID', sub1, sub2, sub3, sub4, sub5, 'AVERAGE', 'REMARK']
     print(tabulate(records, headers=table_headers, tablefmt = 'grid'))
     print()
+    cursor.fetchall()
     
     query = "SELECT COUNT(S.STUDENT_ID), MIN(A.AVG) , MAX(A.AVG), AVG(A.AVG)  FROM STUDENT S NATURAL JOIN ACADEMIC A WHERE S.GRADE={} AND S.SECTION='{}' AND A.TERM='{}' ".format(grade, section, term)
     cursor.execute(query)
