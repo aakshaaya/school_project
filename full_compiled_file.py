@@ -322,7 +322,7 @@ def report_specific_section():
     cursor.execute(query)
     stream_code = cursor.fetchone()[0]
     sub1, sub2, sub3, sub4, sub5 = streams[stream_code]
-
+    cursor.fetchall()
     
     table_headers =['NAME', 'STUDENT_ID', sub1, sub2, sub3, sub4, sub5, 'AVERAGE', 'REMARK']
     print(tabulate(records, headers=table_headers, tablefmt = 'grid'))
